@@ -1,8 +1,5 @@
 import re
 
-
-#thay thế hàm viết tắt
-
 ABBREVIATIONS = {
         "ko": "không",
         "mik": "mình",
@@ -20,13 +17,9 @@ ABBREVIATIONS = {
         "r": "rồi"
     }
 
-
 def clean_text(text):
-    #chuyển về chữ thường
     text = str(text).lower()
-    #thay mã đơn = token
-    text = re.sub(r'\b[a-z]{2,3}\d{4,6}\b', 'ma_don', text) #chuyển thành dạng 2-3 chữ cái và 4-6 chữ số
-    #xóa dấu câu và ký tự đặc biệt
+    text = re.sub(r'\b[a-z]{2,3}\d{4,6}\b', 'ma_don', text)
     text = re.sub(r'[^\w\s]', ' ', text)
 
     words = text.split()
@@ -42,8 +35,6 @@ def clean_text(text):
 
     return text
 
-
-#Test hàm
 if __name__ == "__main__":
     test_sentences = [
         "Cho minh hoi tinh trang don SP32365",
